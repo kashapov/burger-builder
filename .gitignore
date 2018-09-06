@@ -1,2 +1,5 @@
 # Dependency directories
 node_modules
+
+src/hoc1
+src/hoc2
