@@ -12,6 +12,19 @@ class Checkout extends Component {
     }
   }
 
+  componentDidMount() {
+    const query = new URLSearchParams(this.props.location.search);
+
+    const ingredients = {};
+
+    for (let param of query.entries()) {
+      // ['salad', '1']
+      ingredients[param[0]] = +param[1];
+    }
+
+    this.setState({ ingredients: ingredients });
+  }
+
   checkoutCancelledHandler = () => {
     this.props.history.goBack();
   }
@@ -23,10 +36,10 @@ class Checkout extends Component {
   render() {
     return (
       <div>
-        <CheckoutSummary 
-        ingredients={this.state.ingredients}
-        checkoutCancelled={this.checkoutCancelledHandler}
-        checkoutContinued={this.checkoutContinuedHandler} />
+        <CheckoutSummary
+          ingredients={this.state.ingredients}
+          checkoutCancelled={this.checkoutCancelledHandler}
+          checkoutContinued={this.checkoutContinuedHandler} />
       </div>
     );
   }
