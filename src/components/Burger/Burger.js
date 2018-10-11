@@ -6,6 +6,8 @@ const burger = (props) => {
   //Object.keys(props.ingredients) is [salad, bacon, cheese, meat]
   //props.ingredients[igKey] is the number of the current ingredient (singular).
   //So 5 slices of cheese is 5.
+
+  console.log(props);
   let transformedIngredients = Object.keys(props.ingredients)
     .map(igKey => {
       //return props.ingredients[igKey];
