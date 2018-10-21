@@ -7,13 +7,13 @@ const input = (props) => {
 
   const inputClasses = [classes.InputElement];
 
-  if(props.invalid && props.shouldValidate && props.touched) {
+  if (props.invalid && props.shouldValidate && props.touched) {
     inputClasses.push(classes.Invalid);
   }
 
   let validationError = null;
 
-  if(props.invalid && props.touched) {
+  if (props.invalid && props.touched) {
     validationError = <p>Please enter a valid value!</p>;
   }
 
@@ -27,7 +27,7 @@ const input = (props) => {
       break;
     case ('textarea'):
       inputElement = <textarea
-        className={inputClasses}
+        className={inputClasses.join(' ')}
         {...props.elementConfig}
         value={props.value}
         onChange={props.changed} />;
@@ -35,7 +35,7 @@ const input = (props) => {
     case ('select'):
       inputElement = (
         <select
-          className={inputClasses}
+          className={inputClasses.join(' ')}
           value={props.value}
           onChange={props.changed}>
           {props.elementConfig.options.map(option => (
@@ -49,7 +49,7 @@ const input = (props) => {
       break;
     default:
       inputElement = <input
-        className={inputClasses}
+        className={inputClasses.join(' ')}
         {...props.elementConfig}
         value={props.value}
         onChange={props.changed} />;
