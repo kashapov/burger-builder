@@ -59,6 +59,16 @@ class Auth extends Component {
       isValid = value.length <= rules.maxLength && isValid;
     }
 
+    if (rules.isEmail) {
+      const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+      isValid = pattern.test(value) && isValid
+    }
+
+    if (rules.isNumeric) {
+      const pattern = /^\d+$/;
+      isValid = pattern.test(value) && isValid
+    }
+
     return isValid;
   }
 
@@ -73,7 +83,7 @@ class Auth extends Component {
       }
     };
 
-    this.setState({controls: updatedControls});
+    this.setState({ controls: updatedControls });
   }
 
   submitHandler = (event) => {
