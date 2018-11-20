@@ -1,5 +1,6 @@
 # Dependency directories
 node_modules
-
-src/hoc1
-src/hoc2
+build
+firebase.json
+.firebaserc
+.firebase
