@@ -21,11 +21,11 @@ const asyncAuth = asyncComponent(() => {
 });
 
 class App extends Component {
-  componentDidMount() {
+  componentDidMount () {
     this.props.onTryAutoSignup();
   }
 
-  render() {
+  render () {
     let routes = (
       <Switch>
         <Route path="/auth" component={asyncAuth} />
@@ -34,7 +34,7 @@ class App extends Component {
       </Switch>
     );
 
-    if (this.props.isAuthenticated) {
+    if ( this.props.isAuthenticated ) {
       routes = (
         <Switch>
           <Route path="/checkout" component={asyncCheckout} />
@@ -42,6 +42,7 @@ class App extends Component {
           <Route path="/logout" component={Logout} />
           <Route path="/auth" component={asyncAuth} />
           <Route path="/" exact component={BurgerBuilder} />
+          <Redirect to="/" />
         </Switch>
       );
     }
@@ -64,8 +65,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onTryAutoSignup: () => dispatch(actions.authCheckState())
+    onTryAutoSignup: () => dispatch( actions.authCheckState() )
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withRouter( connect( mapStateToProps, mapDispatchToProps )( App ) );

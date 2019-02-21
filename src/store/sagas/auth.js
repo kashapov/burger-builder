@@ -25,7 +25,7 @@ export function* authUserSaga(action) {
   };
 
   let url =
-    "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyAxHrVBNAKe6_K7-Qh8Ml1v1UWTXgtUgKo";
+  "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyAxHrVBNAKe6_K7-Qh8Ml1v1UWTXgtUgKo";
 
   if (!action.isSignup) {
     url =
