@@ -4,3 +4,5 @@ build
 firebase.json
 .firebaserc
 .firebase
+src/hoc2/Aux.js
+src/hoc1/Aux.js
