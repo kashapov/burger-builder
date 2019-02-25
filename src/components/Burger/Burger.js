@@ -1,35 +1,28 @@
 import React from 'react';
+
 import classes from './Burger.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
-const burger = (props) => {
-  //Object.keys(props.ingredients) is [salad, bacon, cheese, meat]
-  //props.ingredients[igKey] is the number of the current ingredient (singular).
-  //So 5 slices of cheese is 5.
-
-  let transformedIngredients = Object.keys(props.ingredients)
-    .map(igKey => {
-      //return props.ingredients[igKey];
-      return [...Array(props.ingredients[igKey])].map((_, i) => {
-        return <BurgerIngredient key={igKey + i} type={igKey} />;
-      });
-    }).reduce((arr, el) => {
-      return arr.concat(el);
-    }, []);
-
-  //console.log(transformedIngredients);
-
-  if (transformedIngredients.length === 0) {
-    transformedIngredients = <p>Please start adding ingredients!</p>;
-  }
-
-  return (
-    <div className={classes.Burger}>
-      <BurgerIngredient type="bread-top" />
-      {transformedIngredients}
-      <BurgerIngredient type="bread-bottom" />
-    </div>
-  );
+const burger = ( props ) => {
+    let transformedIngredients = Object.keys( props.ingredients )
+        .map( igKey => {
+            return [...Array( props.ingredients[igKey] )].map( ( _, i ) => {
+                return <BurgerIngredient key={igKey + i} type={igKey} />;
+            } );
+        } )
+        .reduce((arr, el) => {
+            return arr.concat(el)
+        }, []);
+    if (transformedIngredients.length === 0) {
+        transformedIngredients = <p>Please start adding ingredients!</p>;
+    }
+    return (
+        <div className={classes.Burger}>
+            <BurgerIngredient type="bread-top" />
+            {transformedIngredients}
+            <BurgerIngredient type="bread-bottom" />
+        </div>
+    );
 };
 
 export default burger;
